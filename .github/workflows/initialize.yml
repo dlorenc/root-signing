@@ -44,7 +44,7 @@ jobs:
   check_branch:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+      - uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4.2.1
         with:
           fetch-depth: 0
       - name: Check if remote branch exists
@@ -64,7 +64,7 @@ jobs:
     permissions:
       id-token: 'write'
     steps:
-      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+      - uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4.2.1
         with:
           fetch-depth: 0
       # TODO(https://github.com/sigstore/root-signing/issues/98): Use a common configuration checked into source control
@@ -82,7 +82,7 @@ jobs:
           go-version-file: './go.mod'
           check-latest: true
       # Setup OIDC->SA auth for signing with KMS
-      - uses: google-github-actions/auth@f112390a2df9932162083945e46d439060d66ec2 # v2.1.4
+      - uses: google-github-actions/auth@8254fb75a33b976a221574d287e93919e6a36f70 # v2.1.6
         id: auth
         with:
           token_format: 'access_token'
@@ -108,7 +108,7 @@ jobs:
         run: |
           ./scripts/step-1.5.sh ${{ inputs.revoke_key }}
       - name: Upload new repository
-        uses: actions/upload-artifact@834a144ee995460fba8ed112a2fc961b36a5ec5a # v4.3.6
+        uses: actions/upload-artifact@84480863f228bb9747b473957fcc9e309aa96097 # v4.4.2
         with:
           name: ${{ inputs.repo }}
           path: ${{ inputs.repo }}
@@ -121,7 +121,7 @@ jobs:
       pull-requests: 'write'
       contents: 'write'
     steps:
-      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+      - uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4.2.1
         with:
           ref: ${{ inputs.branch }}
           fetch-depth: 0
